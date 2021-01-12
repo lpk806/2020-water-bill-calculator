@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>2020水費計算機</title>
+</head>
+<body>
+    <div class="container">
+    <form class="card">
+        <div class="m-4">
+        <h4>2020水費計算機</h4>
+        <div class="mb-3">
+          <label for="lastBill" class="form-label">上次帳單水費</label>
+          <input type="number" class="form-control" id="lastBill" onchange="cal()">
+        </div>
+        <div class="mb-3">
+          <label for="currentBill" class="form-label">今次帳單水費</label>
+          <input type="number" class="form-control" id="currentBill" onchange="cal()">
+        </div>
+
+        <div class="mb-3">
+            <label for="last2019" class="form-label">2019最後一期水費</label>
+            <input type="number" class="form-control" id="last2019" onchange="cal()">
+          </div>
+
+        <div class="mb-3">
+            <h5 class="form-label">2020年總水費</h5>
+            <h5 id="total2020"></h5>
+        </div>
+
+        <div class="mb-3">
+            <h5 class="form-label">2020年平均每期水費</h5>
+            <h5 id="average2020"></h5>
+        </div>
+
+        <div class="mb-3">
+            <h5 class="form-label">2020年平均每期水費對比2019年同期水費</h5>
+            <h5 id="contrast"></h5>
+        </div>
+
+    </div>
+      </form>
+
+    </div>
+    <script>
+        const cal = ()=> {
+            
+            let lastBill =  parseFloat(document.getElementById("lastBill").value)
+            let currentBill = parseFloat(document.getElementById("currentBill").value)
+            let last2019 = parseFloat(document.getElementById("last2019").value)
+
+            let total2020 = lastBill + currentBill
+            let average2020 = total2020/3
+            let contrast = 0
+            console.log(last2019)
+            if(last2019 != ""){
+                contrast = (average2020 -  last2019)/7
+            }
+
+            document.getElementById("total2020").innerHTML = "$ " + total2020
+            document.getElementById("average2020").innerHTML = "$ " + average2020
+            document.getElementById("contrast").innerHTML = "$ " + contrast
+            
+        }
+
+    </script>
+</body>
+</html>
