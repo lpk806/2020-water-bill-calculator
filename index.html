@@ -40,6 +40,13 @@
             <h5 id="contrast"></h5>
         </div>
 
+        <div class="mb-3">
+            <h2 class="form-label">總結</h2>
+            <h5 id="conclusion"></h5>
+        </div>
+
+
+
     </div>
       </form>
 
@@ -53,15 +60,18 @@
 
             let total2020 = lastBill + currentBill
             let average2020 = total2020/3
-            let contrast = 0
-            console.log(last2019)
-            if(last2019 != ""){
-                contrast = (average2020 -  last2019)/7
+            let contrast  = (average2020 -  last2019)/7
+
+            document.getElementById("total2020").innerHTML = "$ " + total2020.toFixed(2)
+            document.getElementById("average2020").innerHTML = "$ " + average2020.toFixed(2)
+            document.getElementById("contrast").innerHTML =  contrast.toFixed(2) + '%'
+
+            if(contrast > 13 ){
+                document.getElementById("conclusion").innerHTML =  "你的平均水費較以往明顯多咗，可能因為用水多咗，或水錶/水管問題，請致電55440902區議員何惠彬"
+            }else{
+                document.getElementById("conclusion").innerHTML =  "你的平均水費與以往相若或較少，無需擔心"
             }
 
-            document.getElementById("total2020").innerHTML = "$ " + total2020
-            document.getElementById("average2020").innerHTML = "$ " + average2020
-            document.getElementById("contrast").innerHTML = "$ " + contrast
             
         }
 
